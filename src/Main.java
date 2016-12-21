@@ -7,14 +7,11 @@ import java.util.Map;
  */
 public class Main {
     public static void main(String[] args) {
-        List<Integer> list = new ArrayList<Integer>(){{add(1);add(2); add(3);add(4);}};
+        List<Long> list = new ArrayList<Long>(){{add(1L);add(2L); add(3L);add(4L);}};
 
-        Map m = Streams.of(list)
-                .filter(p -> p > 2)
-                .transform( p -> p + 1)
+        Map<Integer, String> m = Streams.of(list)
+                .filter(p -> p > 1)
+                .transform(list::indexOf)
                 .toMap(p -> p, Object::toString);
-
-
-
     }
 }

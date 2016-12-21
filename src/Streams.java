@@ -1,8 +1,6 @@
 import java.util.*;
 import java.util.function.Function;
 import java.util.function.Predicate;
-import java.util.stream.DoubleStream;
-import java.util.stream.Stream;
 
 /**
  * Created by zabor on 20.12.2016.
@@ -38,8 +36,7 @@ public class Streams<T> {
         return new Streams<R>(list);
         }
 
-
-    public<K, V> Map<K, V> toMap(Function<? super T, K> keyFunc, Function<? super T, V> valueFunc) {
+    public<K, V> Map<K, V> toMap(Function<? super T, ? extends K> keyFunc, Function<? super T, ? extends V> valueFunc) {
         Map<K, V> map = new HashMap<>();
         for(T elem : innerCollection){
             map.put(keyFunc.apply(elem), valueFunc.apply(elem));
